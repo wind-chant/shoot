@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shootBLL
+namespace shootModels
 {
-    public class Class1
+    /// <summary>
+    /// 玩家英雄类
+    /// </summary>
+    class Hero:Base
     {
     }
 }

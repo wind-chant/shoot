@@ -10,7 +10,7 @@ namespace shootModels
     /// <summary>
     /// 所有物品的基类
     /// </summary>
-    abstract class Base
+    public abstract class Base
     {
         // 位置
         private Point location;
@@ -18,9 +18,9 @@ namespace shootModels
         // 是否存在
         private bool live;
 
-        public Point Location
+        public Base(Point p)
         {
-            set { location = value; }
+            this.location = p;
         }
 
         public bool Live
