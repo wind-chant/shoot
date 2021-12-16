@@ -43,5 +43,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\shootDAL\shootDAL.csproj">
+      <Project>{1ef3f8e3-8630-4100-8c6c-4e628736f7b0}</Project>
+      <Name>shootDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\shootModels\shootModels.csproj">
+      <Project>{06429168-3f81-4cf6-9567-2416f22e4794}</Project>
+      <Name>shootModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

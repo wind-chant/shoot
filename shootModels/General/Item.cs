@@ -16,15 +16,37 @@ namespace shootModels.General
         private bool faction;
         private int width;
         private int height;
-        private int x_speed;
-        private int y_speed;
-        public Item(int x, int y, bool faction, int width, int height, int x_speed, int y_speed) :base(x, y)
+        private int speed;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x">x坐标</param>
+        /// <param name="y">y坐标</param>
+        /// <param name="faction">好坏类别</param>
+        /// <param name="width">宽度</param>
+        /// <param name="height">高度</param>
+        /// <param name="speed">速度</param>
+        public Item(int x, int y, bool faction, int width, int height, int speed) :base(x, y)
         {
             this.faction = faction;
             this.width = width;
             this.height = height;
-            this.x_speed = x_speed;
-            this.y_speed = y_speed;
+            this.speed = speed;
+        }
+
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
+        public int WIDTH
+        {
+            get { return width; }
+        }
+        public int HEIGHT
+        {
+            get { return height; }
         }
 
         public bool Faction

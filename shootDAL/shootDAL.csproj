@@ -89,5 +89,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\shootModels\shootModels.csproj">
+      <Project>{06429168-3f81-4cf6-9567-2416f22e4794}</Project>
+      <Name>shootModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

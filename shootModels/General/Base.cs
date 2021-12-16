@@ -12,11 +12,14 @@ namespace shootModels
     /// </summary>
     public abstract class Base
     {
-        // 位置
-        private int x;
-        private int y;
+        /// <summary>
+        /// 位置
+        /// </summary>
+        private int x, y;
 
-        // 是否存在
+        /// <summary>
+        /// 是否存在
+        /// </summary>
         private bool live;
 
         public Base(int x, int y)
@@ -34,11 +37,13 @@ namespace shootModels
         public int X
         {
             get { return x; }
+            set { x = value; }
         }
 
         public int Y
         {
             get { return y; }
+            set { y = value; }
         }
 
         /// <summary>
