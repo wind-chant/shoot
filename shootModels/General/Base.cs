@@ -13,14 +13,16 @@ namespace shootModels
     public abstract class Base
     {
         // 位置
-        private Point location;
-        
+        private int x;
+        private int y;
+
         // 是否存在
         private bool live;
 
-        public Base(Point p)
+        public Base(int x, int y)
         {
-            this.location = p;
+            this.x = x;
+            this.y = y;
         }
 
         public bool Live
@@ -31,12 +33,12 @@ namespace shootModels
 
         public int X
         {
-            get { return location.X; }
+            get { return x; }
         }
 
         public int Y
         {
-            get { return location.Y; }
+            get { return y; }
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace shootModels.General
         private int height;
         private int x_speed;
         private int y_speed;
-        public Item(Point p, bool faction, int width, int height, int x_speed, int y_speed) :base(p)
+        public Item(int x, int y, bool faction, int width, int height, int x_speed, int y_speed) :base(x, y)
         {
             this.faction = faction;
             this.width = width;
