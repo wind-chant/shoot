@@ -19,6 +19,11 @@ namespace shootModels
         private int life;
         //飞船方向， 默认停止
         private SpaceShipDirection direction = SpaceShipDirection.STOP;
+        public SpaceShipDirection Direction
+        {
+            get { return direction; }
+            set { direction = value; }
+        }
         //射击工具类
         private ShootingBehavior shootBehavior;
 
@@ -26,23 +31,11 @@ namespace shootModels
         {
             this.life = life;
         }
-        public new bool Live
-        {
-            get { return Live; }
-            set { Live = value; }
-        }
+
         public int Life
         {
             get { return life; }
         }
-        public new bool Faction
-        {
-            get { return Faction; }
-        }
-        /// <summary>
-        /// 爆炸
-        /// </summary>
-        protected abstract void Explosion();
         /// <summary>
         /// 死亡
         /// </summary>
@@ -50,7 +43,6 @@ namespace shootModels
         {
             life = 0;
             Live = false;
-            Explosion();
         }
         /// <summary>
         /// 受到伤害
@@ -112,13 +104,14 @@ namespace shootModels
                 default: break;
             }
         }
-        protected void Drow(Graphics g, Image img, int x, int y)
+        protected void Draw(Graphics g, Image img, int x, int y)
         {
             g.DrawImage(img, x, y);
         }
-        public ShootingBehavior ShootBehavior
+
+        public void SetShootBehavior(ShootingBehavior shootBehavior)
         {
-            set { shootBehavior = value; }
+            this.shootBehavior = shootBehavior;
         }
     }
 }

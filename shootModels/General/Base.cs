@@ -26,6 +26,7 @@ namespace shootModels
         {
             this.x = x;
             this.y = y;
+            this.Live = true;
         }
 
         public bool Live

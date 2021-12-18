@@ -40,27 +40,17 @@ namespace shootModels.Items
             nowLife = life;
         }
 
-        public new int X
-        {
-            get { return X; }
-            set { X = value; }
-        }
-        public new int Y
-        {
-            get { return Y; }
-            set { Y = value; }
-        }
         public int NowLife
         {
-            get { return NowLife; }
-            set { NowLife = value; }
+            get { return nowLife; }
+            set { nowLife = value; }
         }
 
         public override void Draw(Graphics g)
         {
-            g.DrawString("生命值:", new Font("Arial", 10f), new SolidBrush(Color.Black), X + 50, Y - 20);
-            g.DrawRectangle(new Pen(Color.Red), X + 85, Y - 18, width * allLife, height);
-            g.FillRectangle(new SolidBrush(Color.Red), X + 85, Y - 18, width * nowLife, height);
+            g.DrawString("HP:", new Font("Arial", 10f), new SolidBrush(Color.Black), X-30, Y - 20);
+            g.DrawRectangle(new Pen(Color.Red), X, Y - 18, width * allLife, height);
+            g.FillRectangle(new SolidBrush(Color.Red), X, Y - 18, width * nowLife, height);
         }
     }
 }

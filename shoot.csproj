@@ -78,6 +78,7 @@
     </Compile>
     <EmbeddedResource Include="UI\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmStart.resx">
       <DependentUpon>FrmStart.cs</DependentUpon>
@@ -104,6 +105,10 @@
       <Project>{06429168-3f81-4cf6-9567-2416f22e4794}</Project>
       <Name>shootModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Images\background.png" />
+    <Content Include="Resources\Images\hero.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
