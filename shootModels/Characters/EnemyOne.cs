@@ -89,7 +89,7 @@ namespace shootModels.Characters
                 Direction = changelr[Direction];
             }
             {
-                if (new Random().Next(0, 100)%10 == 5 )
+                if (new Random().Next(0, 100)%20 == 1 )
                 {
                     Fire();
                 }
