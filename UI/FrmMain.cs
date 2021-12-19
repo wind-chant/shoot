@@ -105,10 +105,10 @@ namespace shoot.UI
         /// <param name="e"></param>
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            /*            //添加背景音乐
-                        String musicPath = Directory.GetCurrentDirectory() + "\\backgroundMusic\\";
-                        SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "u_bgm.wav");//   
-                        backgroundMusic.PlayLooping();*/
+            //添加背景音乐
+            String musicPath = @"../../Resources/music/";
+            SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "bgm.wav");//   
+            backgroundMusic.PlayLooping();
             //添加Hero
             UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, 50, 45, 20, 10000));
             //窗体加载后,启动线程,刷新界面
@@ -261,7 +261,7 @@ namespace shoot.UI
 
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
         {
-            UpdateManager.GetInstance().Hero.KeyDown(e);
+             UpdateManager.GetInstance().Hero.KeyDown(e);
         }
 
         private void FrmMain_KeyUp(object sender, KeyEventArgs e)

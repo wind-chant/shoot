@@ -241,6 +241,7 @@ namespace shootModels
             enemy = new List<SpaceShip>();
             enemyBullet = new List<Bullet>();
             bombs = new List<Base>();
+            buff = new List<Buff>();
             hero = null;
         }
 
