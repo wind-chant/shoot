@@ -11,8 +11,25 @@ namespace shootModels.Items
     /// <summary>
     /// 子弹基类
     /// </summary>
-    public abstract class Bullet : Item
+    public class Bullet : Item
     {
+        private static string imagesPath = @"../../Resources/Images/";
+
+        private static Dictionary<string, Image> images = new Dictionary<string, Image>()
+        {
+           {"L",Image.FromFile(imagesPath+"missileH_L.gif")},
+           {"LU",Image.FromFile(imagesPath+"missileH_LU.gif")},
+           {"UL",Image.FromFile(imagesPath+"missileH_LUU.gif")},
+           {"U",Image.FromFile(imagesPath+"missileH_U.gif")},
+           {"UR",Image.FromFile(imagesPath+"missileH_RUU.gif")},
+           {"RU",Image.FromFile(imagesPath+"missileH_RU.gif")},
+           {"R",Image.FromFile(imagesPath+"missileH_R.gif")},
+           {"RD",Image.FromFile(imagesPath+"missileH_RD.gif")},
+           {"DR",Image.FromFile(imagesPath+"missileH_RDD.gif")},
+           {"D",Image.FromFile(imagesPath+"missileH_D.gif")},
+           {"DL",Image.FromFile(imagesPath+"missileH_LDD.gif")},
+           {"LD",Image.FromFile(imagesPath+"missileH_LD.gif")}
+        };
         public static BulletDirection[] BulletDirections = new BulletDirection[]
 {
             BulletDirection.U,
@@ -80,7 +97,7 @@ namespace shootModels.Items
                     Y += (int)(COS30 * Speed);
                     break;
                 case BulletDirection.D:
-                    X += Speed;
+                    Y += Speed;
                     break;
                 case BulletDirection.DL:
                     X -= (int)(COS30 * Speed);
@@ -102,6 +119,10 @@ namespace shootModels.Items
                     Y -= (int)(COS30 * Speed);
                     break;
                 default: break;
+            }
+            if (X < 0 || Y < 0 || X > UpdateManager.getWidth() || Y > UpdateManager.getHeight())
+            {
+                Live = false;
             }
         }
         /// <summary>
@@ -152,6 +173,16 @@ namespace shootModels.Items
                     g.DrawImage(images["UL"], x, y);
                     break;
             }
+        }
+        public override void Draw(System.Drawing.Graphics g)
+        {
+            if (Live == false)
+            {
+                UpdateManager.GetInstance().RemoveElement(this);
+                return;
+            }
+            this.Move();
+            Draw(g, images, X, Y);
         }
     }
 }

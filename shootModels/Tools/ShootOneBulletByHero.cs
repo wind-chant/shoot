@@ -17,8 +17,9 @@ namespace shootModels.Items
 
         public override void Fire()
         {
+            Bullet b = new Bullet(UpdateManager.GetInstance().Hero, 20, 20, 25, ship.Faction, BulletDirection.U, 10);
             if (ship.Live)
-                ;
+                UpdateManager.GetInstance().AddElement(b);
         }
     }
 }

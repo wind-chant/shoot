@@ -25,9 +25,5 @@ namespace shootModels.Characters
             throw new NotImplementedException();
         }
 
-        protected override void Explosion()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

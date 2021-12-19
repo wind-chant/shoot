@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Characters\EnemyBoss.cs" />
+    <Compile Include="Characters\EnemyOne.cs" />
     <Compile Include="General\Base.cs" />
     <Compile Include="Characters\Hero.cs" />
     <Compile Include="General\EnumDefine.cs" />
@@ -72,10 +73,12 @@
     <Compile Include="Items\BlooBar.cs" />
     <Compile Include="Items\Bomb.cs" />
     <Compile Include="Items\Bullet.cs" />
+    <Compile Include="Tools\ShootBulletByEnemy.cs" />
     <Compile Include="Tools\ShootOneBulletByHero.cs" />
     <Compile Include="Tools\ShootingBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Characters\SpaceShip.cs" />
+    <Compile Include="Tools\ShootTwoBulletByHero.cs" />
     <Compile Include="Tools\UpdateManager.cs" />
   </ItemGroup>
   <ItemGroup />

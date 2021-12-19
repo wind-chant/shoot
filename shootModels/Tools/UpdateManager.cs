@@ -1,13 +1,15 @@
 ﻿using shootModels;
 using shootModels.Items;
+using shootModels.Tools;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shootBLL
+namespace shootModels
 {
     /// <summary>
     /// 画面更新检测
@@ -35,6 +37,29 @@ namespace shootBLL
                 instance = new UpdateManager();
             }
             return instance;
+        }
+        /// <summary>
+        /// 窗口宽度
+        /// </summary>
+        public static int getWidth()
+        {
+            return int.Parse(ConfigurationManager.AppSettings["width"].ToString());
+        }
+        /// <summary>
+        /// 窗口高度
+        /// </summary>
+        public static int getHeight()
+        {
+            return int.Parse(ConfigurationManager.AppSettings["height"].ToString());
+        }
+        /// <summary>
+        /// 读取配置
+        /// </summary>
+        /// <param name="str">配置名称</param>
+        /// <returns></returns>
+        public static string getatt(string str)
+        {
+            return ConfigurationManager.AppSettings[str].ToString();
         }
         /// <summary>
         /// 添加物体
@@ -109,25 +134,25 @@ namespace shootBLL
         public void Draw(Graphics g)
         {
             hero.Draw(g);
-
-            foreach(Bullet b in heroBullet)
+            for (int i = 0; i < heroBullet.Count; i++)
             {
-                b.Draw(g);
+                heroBullet[i].Draw(g);
+            }
+            for (int i = 0; i < enemy.Count; i++)
+            {
+                enemy[i].Draw(g);
             }
 
-            foreach(SpaceShip spaceShip in enemy)
+            //画敌人的子弹
+            for (int i = 0; i < enemyBullet.Count; i++)
             {
-                spaceShip.Draw(g);
+                enemyBullet[i].Draw(g);
             }
 
-            foreach (Bullet b in enemyBullet)
+            //画所有人的爆炸
+            for (int i = 0; i < bombs.Count; i++)
             {
-                b.Draw(g);
-            }
-
-            foreach(Base b in bombs)
-            {
-                b.Draw(g);
+                bombs[i].Draw(g);
             }
 
         }
@@ -170,11 +195,14 @@ namespace shootBLL
                     if (bullet.GetRectangle().IntersectsWith(spaceShip.GetRectangle()))
                     {
                         spaceShip.Injury(bullet.Power);
-                        if(!spaceShip.Live)
+                        if (!spaceShip.Live)
+                        {
                             UpdateManager.GetInstance().AddElement(new Bomb(spaceShip));
-                        hero.score += 10;
-                        /*if (hero.score > 100)//当经验值超过某个值得时候，会升级装备
-                            hero.SetFireBehavior(new FireWithThreeMissilesByHero(myHero));//策略模式*/
+
+                            hero.score += 10;
+                            if (hero.score > 20)//当经验值超过某个值得时候，会升级装备
+                                hero.SetShootBehavior(new ShootTwoBulletByHero(hero));//策略模式*/
+                        }
                         bullet.Live = false;
                     }
                 }
@@ -188,6 +216,11 @@ namespace shootBLL
             enemyBullet = new List<Bullet>();
             bombs = new List<Base>();
             hero = null;
+        }
+
+        public int getEnemyCount()
+        {
+            return enemy.Count;
         }
     }
 }

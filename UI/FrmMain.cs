@@ -66,6 +66,7 @@ namespace shoot.UI
         /// 敌人的总个数
         /// </summary>
         int enemyCount = 0;
+        private static int enemyU = 20;
         /// <summary>
         /// 开始界面
         /// </summary>
@@ -108,7 +109,7 @@ namespace shoot.UI
                         SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "u_bgm.wav");//   
                         backgroundMusic.PlayLooping();*/
             //添加Hero
-            UpdateManager.GetInstance().AddElement(new Hero(300, 500, true, 110, 98, 10, 100));
+            UpdateManager.GetInstance().AddElement(new Hero(300, 500, true, 110, 98, 20, 100));
             //窗体加载后,启动线程,刷新界面
             pt = new Thread(new ThreadStart(PaintThread));
             pt.Start();
@@ -125,7 +126,7 @@ namespace shoot.UI
                 //画背景图片
                 DrawBackground(gImg);
 
-                //GetEnemys();
+                GetEnemys();
 
                 // 碰撞检测
                 UpdateManager.GetInstance().DoHitCheck();
@@ -192,40 +193,42 @@ namespace shoot.UI
             }
         }
 
-        /*private void GetEnemys()
+        private void GetEnemys()
         {
-            if (pkBoss == -1)
+            if (enemyCount == -1)
             {
                 return;
             }
 
-            if (pkBoss < 8)
+            if (enemyCount < enemyU && UpdateManager.GetInstance().getEnemyCount()<8)
             {
-                if (enemyRandom.Next(0, 200) < 5)
+                SpaceShip enemy;
+                if (enemyRandom.Next(0, 200) < 20)
                 {
-                    HitCheck.GetInstance().AddElement(new EnemyOne(enemyRandom.Next(-90, 500), -50, 10, 10, 10, false, enemyRandom.Next(0, 2) == 0 ? true : false));
-                    pkBoss++;
+                    enemy = new EnemyOne(enemyRandom.Next(0, width), 0, false, 111, 96, 10, 30);
+                    UpdateManager.GetInstance().AddElement(enemy);
+                    enemyCount++;
                 }
-
+/*
                 if (enemyRandom.Next(0, 200) < 5)
                 {
-                    HitCheck.GetInstance().AddElement(new EnemyTwo(-50, enemyRandom.Next(100, 450), 5, 5, 10, false, enemyRandom.Next(0, 2) == 0 ? true : false));
-                    pkBoss++;
+                    UpdateManager.GetInstance().AddElement(new EnemyTwo(-50, enemyRandom.Next(100, 450), 5, 5, 10, false, enemyRandom.Next(0, 2) == 0 ? true : false));
+                    enemyCount++;
                 }
 
                 if (enemyRandom.Next(0, 200) < 2)
                 {
-                    HitCheck.GetInstance().AddElement(new EnemyThree(enemyRandom.Next(10, 540), 800, 5, 5, 10, false));
-                    pkBoss++;
-                }
+                    UpdateManager.GetInstance().AddElement(new EnemyThree(enemyRandom.Next(10, 540), 800, 5, 5, 10, false));
+                    enemyCount++;
+                }*/
             }
-            else
+            /*else
             {
 
                 HitCheck.GetInstance().AddElement(eBoss);
                 pkBoss = -1;
-            }
-        }*/
+            }*/
+        }
 
         /// <summary>
         /// 画游戏背景
@@ -233,11 +236,16 @@ namespace shoot.UI
         /// <param name="g"></param>
         private void DrawBackground(Graphics g)
         {
-            g.DrawImage(backgroundImg, 0, roll - width, width, height);
+            /*            g.DrawImage(backgroundImg, 0, roll - width, width, height);
+                        g.DrawImage(backgroundImg, 0, roll, width, height);
+
+                        roll += 3;
+                        if (roll >= 700) roll = 0;*/
+            g.DrawImage(backgroundImg, 0, roll - height, width, height);
             g.DrawImage(backgroundImg, 0, roll, width, height);
 
             roll += 3;
-            if (roll >= 700) roll = 0;
+            if (roll >= height) roll = 0;
         }
 
         private void FrmMain_Paint(object sender, PaintEventArgs e)

@@ -108,7 +108,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Images\background.png" />
+    <Content Include="Resources\Images\blast2_0.gif" />
+    <Content Include="Resources\Images\blast2_1.gif" />
+    <Content Include="Resources\Images\blast2_2.gif" />
+    <Content Include="Resources\Images\blast2_3.gif" />
+    <Content Include="Resources\Images\blast2_4.gif" />
+    <Content Include="Resources\Images\blast2_5.gif" />
+    <Content Include="Resources\Images\blast2_6.gif" />
+    <Content Include="Resources\Images\blast2_7.gif" />
+    <Content Include="Resources\Images\blast2_8.gif" />
+    <Content Include="Resources\Images\enemy1.png" />
     <Content Include="Resources\Images\hero.png" />
+    <Content Include="Resources\Images\missileH_D.gif" />
+    <Content Include="Resources\Images\missileH_L.gif" />
+    <Content Include="Resources\Images\missileH_LD.gif" />
+    <Content Include="Resources\Images\missileH_LDD.gif" />
+    <Content Include="Resources\Images\missileH_LU.gif" />
+    <Content Include="Resources\Images\missileH_LUU.gif" />
+    <Content Include="Resources\Images\missileH_R.gif" />
+    <Content Include="Resources\Images\missileH_RD.gif" />
+    <Content Include="Resources\Images\missileH_RDD.gif" />
+    <Content Include="Resources\Images\missileH_RU.gif" />
+    <Content Include="Resources\Images\missileH_RUU.gif" />
+    <Content Include="Resources\Images\missileH_U.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
