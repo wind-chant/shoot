@@ -16,6 +16,7 @@ namespace shootModels
     /// </summary>
     public class UpdateManager
     {
+        public static Random random = new Random();
         private Hero hero = null;
         public Hero Hero
         {
@@ -25,6 +26,7 @@ namespace shootModels
         private List<SpaceShip> enemy = new List<SpaceShip>();
         private List<Bullet> enemyBullet = new List<Bullet>();
         private List<Base> bombs = new List<Base>();
+        private List<Buff> buff = new List<Buff>();
 
         /* volatile 关键字表示字段可能被多个并发执行线程修改。声明为 
          * volatile 的字段不受编译器优化（假定由单个线程访问）的限制。
@@ -73,6 +75,12 @@ namespace shootModels
                 return;
             }
 
+            if (item is Buff)
+            {
+                buff.Add((Buff)item);
+                return;
+            }
+
             if (item is Bullet && ((Bullet)item).Faction)
             {
                 heroBullet.Add((Bullet)item);
@@ -109,6 +117,12 @@ namespace shootModels
                 return;
             }
 
+            if (item is Buff)
+            {
+                buff.Remove((Buff)item);
+                return;
+            }
+
             if (item is SpaceShip)
             {
                 enemy.Remove((SpaceShip)item);
@@ -141,6 +155,11 @@ namespace shootModels
             for (int i = 0; i < enemy.Count; i++)
             {
                 enemy[i].Draw(g);
+            }
+
+            for (int i = 0; i < buff.Count; i++)
+            {
+                buff[i].Draw(g);
             }
 
             //画敌人的子弹
@@ -185,25 +204,32 @@ namespace shootModels
                         b.Live = false;
                     }
                 }
+
+                //检测主人公与buff是否相交
+                foreach (Buff b in buff)
+                {
+                    if (hero.GetRectangle().IntersectsWith(b.GetRectangle()))
+                    {
+                        hero.AddBuff(b);
+                        b.Live = false;
+                    }
+                }
             }
 
             //检测主人公的子弹与敌人是否相交
-            foreach(Bullet bullet in heroBullet)
+            for (int i = 0; i < heroBullet.Count; i++)
             {
-                foreach(SpaceShip spaceShip in enemy)
+                for (int j = 0; j < enemy.Count; j++)
                 {
-                    if (bullet.GetRectangle().IntersectsWith(spaceShip.GetRectangle()))
+                    if (heroBullet[i].GetRectangle().IntersectsWith(enemy[j].GetRectangle()))
                     {
-                        spaceShip.Injury(bullet.Power);
-                        if (!spaceShip.Live)
+                        enemy[j].Injury(heroBullet[i].Power);
+                        if (!enemy[j].Live)
                         {
-                            UpdateManager.GetInstance().AddElement(new Bomb(spaceShip));
-
+                            UpdateManager.GetInstance().AddElement(new Bomb(enemy[j]));
                             hero.score += 10;
-                            if (hero.score > 20)//当经验值超过某个值得时候，会升级装备
-                                hero.SetShootBehavior(new ShootTwoBulletByHero(hero));//策略模式*/
                         }
-                        bullet.Live = false;
+                        heroBullet[i].Live = false;
                     }
                 }
             }

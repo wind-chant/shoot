@@ -27,6 +27,12 @@ namespace shootModels
         //射击工具类
         private ShootingBehavior shootBehavior;
 
+        public ShootingBehavior ShootBehavior
+        {
+            get { return shootBehavior; }
+            set { shootBehavior = value; }
+        }
+
         public SpaceShip(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed)
         {
             this.life = life;
@@ -34,6 +40,7 @@ namespace shootModels
 
         public int Life
         {
+            set { life = value; }
             get { return life; }
         }
         /// <summary>
@@ -55,6 +62,10 @@ namespace shootModels
                 life -= i;
             }
             if(life <= 0)
+            {
+                Death();
+            }
+            if (life <= 0)
             {
                 Death();
             }

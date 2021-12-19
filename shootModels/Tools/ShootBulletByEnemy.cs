@@ -16,7 +16,7 @@ namespace shootModels.Tools
         }
         public override void Fire()
         {
-            Bullet b = new Bullet(ship, 20, 20, 25, ship.Faction, BulletDirection.D, 10);
+            Bullet b = new Bullet(ship, 15, 37, 25, ship.Faction, BulletDirection.D, 10);
             UpdateManager.GetInstance().AddElement(b);
         }
     }

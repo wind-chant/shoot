@@ -24,20 +24,29 @@ namespace shootModels.Items
         /// 所有生命值
         /// </summary>
         private int allLife;
+        public int AllLife
+        {
+            get { return allLife; }
+        }
         /// <summary>
         /// 当前生命值
         /// </summary>
         private int nowLife;
+        /// <summary>
+        /// 飞船宽度/2
+        /// </summary>
+        private int shipWidth;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="x">x坐标</param>
         /// <param name="y">y坐标</param>
         /// <param name="life">生命值</param>
-        public BlooBar(int x, int y, int life) : base(x, y)
+        public BlooBar(int x, int y, int life, int shipWidth) : base(x, y)
         {
             allLife = life;
             nowLife = life;
+            this.shipWidth = shipWidth/2;
         }
 
         public int NowLife
@@ -48,9 +57,11 @@ namespace shootModels.Items
 
         public override void Draw(Graphics g)
         {
-            g.DrawString("HP:", new Font("Arial", 10f), new SolidBrush(Color.Black), X-30, Y - 20);
-            g.DrawRectangle(new Pen(Color.Red), X, Y - 18, width * allLife, height);
-            g.FillRectangle(new SolidBrush(Color.Red), X, Y - 18, width * nowLife, height);
+            int nx = X + shipWidth;
+            int ny = Y - 18;
+            g.DrawString("HP:", new Font("Arial", 10f), new SolidBrush(Color.Red), nx - width * allLife / 2 - 20, ny);
+            g.DrawRectangle(new Pen(Color.Red ), nx - width * allLife / 2 + 5, ny, width * allLife, height);
+            g.FillRectangle(new SolidBrush(Color.Green), nx - width * allLife / 2 + 6, ny+1, width * nowLife-1, height-1);
         }
     }
 }

@@ -17,11 +17,11 @@ namespace shootModels.Characters
             {SpaceShipDirection.U, SpaceShipDirection.D },
             {SpaceShipDirection.RU, SpaceShipDirection.RD },
             {SpaceShipDirection.R, SpaceShipDirection.L },
-            {SpaceShipDirection.RD, SpaceShipDirection.LU },
+            {SpaceShipDirection.RD, SpaceShipDirection.RU },
             {SpaceShipDirection.D, SpaceShipDirection.U },
-            {SpaceShipDirection.LD, SpaceShipDirection.RU },
+            {SpaceShipDirection.LD, SpaceShipDirection.LU },
             {SpaceShipDirection.L, SpaceShipDirection.R },
-            {SpaceShipDirection.LU, SpaceShipDirection.RD },
+            {SpaceShipDirection.LU, SpaceShipDirection.LD },
         }; 
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changelr = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
         {
@@ -34,11 +34,10 @@ namespace shootModels.Characters
             {SpaceShipDirection.L, SpaceShipDirection.R },
             {SpaceShipDirection.LU, SpaceShipDirection.RU },
         };
-        private static double COS45 = 0.707;
         /// <summary>
         /// 图片路径
         /// </summary>
-        static string imgPath = @"../../Resources/Images/enemy1.png";
+        static string imgPath = @"../../Resources/Images/spaceShip/enemy1.png";
         /// <summary>
         /// 图片
         /// </summary>
@@ -64,14 +63,14 @@ namespace shootModels.Characters
         protected override void Move()
         {
             int frmWidth = int.Parse(UpdateManager.getatt("width"));
-            int frmHeight = int.Parse(UpdateManager.getatt("height"));
+              int frmHeight = int.Parse(UpdateManager.getatt("height"));
             base.Move();
 
             //超出边界检测
             if (X < 0)
             {
                 X = 0;
-                Direction = changeud[Direction];
+                Direction = changelr[Direction];
             }
             if (Y < 0)
             {
@@ -86,7 +85,7 @@ namespace shootModels.Characters
             if (Y + HEIGHT + 37 > frmHeight)
             {
                 Y = frmHeight - 37 - this.HEIGHT;
-                Direction = changelr[Direction];
+                Direction = changeud[Direction];
             }
             {
                 if (new Random().Next(0, 100)%20 == 1 )

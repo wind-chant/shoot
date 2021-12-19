@@ -1,5 +1,6 @@
 ﻿using shootModels.General;
 using shootModels.Items;
+using shootModels.Tools;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,7 +25,7 @@ namespace shootModels
         /// <summary>
         /// 图片路径
         /// </summary>
-        static string imgPath = @"../../Resources/Images/hero.png";
+        static string imgPath = @"../../Resources/Images/spaceShip/hero.png";
         /// <summary>
         /// 图片
         /// </summary>
@@ -35,7 +36,7 @@ namespace shootModels
 
         public Hero(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)
         {
-            blb = new BlooBar(x, y, life);
+            blb = new BlooBar(x, y, life, width);
             SetShootBehavior(new ShootOneBulletByHero(this));
         }
 
@@ -119,7 +120,8 @@ namespace shootModels
 
         public override void Draw(Graphics g)
         {
-            blb.NowLife = Life;
+            blb.NowLife = Math.Min(Life, blb.AllLife);
+            Life = blb.NowLife;
 
             if (!Live)
             {
@@ -128,8 +130,8 @@ namespace shootModels
             Move();
             blb.Draw(g);
             g.DrawString(str, new Font("Arial", 10f), new SolidBrush(Color.Red), X, Y - 50);
-            g.DrawString("scores:", new Font("Arial", 10f), new SolidBrush(Color.Red), X, Y + img.Height);
-            g.DrawString(score.ToString(), new Font("Arial", 10f), new SolidBrush(Color.Red), X + 55, Y + img.Height);
+            g.DrawString("scores:", new Font("Arial", 10f), new SolidBrush(Color.Red), X, Y + 20 + img.Height);
+            g.DrawString(score.ToString(), new Font("Arial", 10f), new SolidBrush(Color.Red), X + 55, Y + 20 + img.Height);
             base.Draw(g, img, X, Y);
         }
 
@@ -150,5 +152,19 @@ namespace shootModels
             blb.Y = Y;
         }
 
+        public void AddBuff(Buff b)
+        {
+            if(b.Name == "hp")
+            {
+                Injury(-30);
+            }
+            else
+            {
+                if(ShootBehavior is ShootOneBulletByHero)
+                    ShootBehavior = new ShootTwoBulletByHero(this);
+                else if(ShootBehavior is ShootTwoBulletByHero)
+                    ShootBehavior = new ShootThreeBulletByHero(this);
+            }
+        }
     }
 }
