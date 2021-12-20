@@ -12,6 +12,7 @@ namespace shootModels
         public string name;
         public string password;
         public string data;
+        public int point;
         public User(string name, string password)
         {
             this.name = name;

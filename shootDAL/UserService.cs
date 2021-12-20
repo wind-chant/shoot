@@ -30,11 +30,14 @@ namespace shootDAL
                 "UPDATE user " +
                 "SET " +
                     "data = @data " + //FK
+                    "point = @point " +
                 "WHERE id = @id";
             MySqlParameter[] para = new MySqlParameter[]
               {
                 new MySqlParameter("@id", user.id),
                 new MySqlParameter("@data", user.data), //FK
+                
+                new MySqlParameter("@point", user.point), //FK
 
               };
 
@@ -58,8 +61,8 @@ namespace shootDAL
 
         public static User GetUserById(int id)
         {
-            string sql = "SELECT * FROM user WHERE id = @name";
-            using (MySqlDataReader reader = DBHelper.GetReader(sql, new MySqlParameter("@name", id)))//使用Using语句，资源可以得到及时释放
+            string sql = "SELET * FROM user WHERE id = @id";
+            using (MySqlDataReader reader = DBHelper.GetReader(sql, new MySqlParameter("@id", id)))//使用Using语句，资源可以得到及时释放
             {
                 if (reader.Read())
                 {
@@ -71,6 +74,10 @@ namespace shootDAL
                         user.data = null;
                     else
                         user.data = (string)reader["data"];
+                    if (reader["point"] == DBNull.Value)
+                        user.point = 0;
+                    else
+                        user.point = (int)reader["point"];
                     return user;
                 }
                 else
@@ -96,6 +103,10 @@ namespace shootDAL
                         user.data = null;
                     else
                         user.data = (string)reader["data"];
+                    if (reader["point"] == DBNull.Value)
+                        user.point = 0;
+                    else
+                        user.point = (int)reader["point"];
                     return user;
                 }
                 else
