@@ -14,6 +14,7 @@ namespace shoot.UI
 {
     public partial class FrmStart : Form
     {
+        private User user;
         /// <summary>
         /// 窗口宽度
         /// </summary>
@@ -22,9 +23,10 @@ namespace shoot.UI
         /// 窗口高度
         /// </summary>
         private readonly int height = int.Parse(UpdateManager.getAtt("height"));
-        public FrmStart()
+        public FrmStart(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void FrmStart_Load(object sender, EventArgs e)

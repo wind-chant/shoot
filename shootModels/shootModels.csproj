@@ -83,6 +83,7 @@
     <Compile Include="Tools\ShootThreeBulletByHero.cs" />
     <Compile Include="Tools\ShootTwoBulletByHero.cs" />
     <Compile Include="Tools\UpdateManager.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

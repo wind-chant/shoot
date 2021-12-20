@@ -76,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -100,6 +103,10 @@
     <ProjectReference Include="shootBLL\shootBLL.csproj">
       <Project>{e206c311-d2b8-4032-8ab7-5f038c305e35}</Project>
       <Name>shootBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="shootDAL\shootDAL.csproj">
+      <Project>{1EF3F8E3-8630-4100-8C6C-4E628736F7B0}</Project>
+      <Name>shootDAL</Name>
     </ProjectReference>
     <ProjectReference Include="shootModels\shootModels.csproj">
       <Project>{06429168-3f81-4cf6-9567-2416f22e4794}</Project>

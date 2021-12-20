@@ -17,7 +17,7 @@ namespace shoot
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmStart());
+            Application.Run(new FrmLogin());
         }
     }
 }
