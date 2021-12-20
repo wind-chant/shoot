@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace shootModels
 {
+    [Serializable]
     /// <summary>
     /// 画面更新检测
     /// </summary>

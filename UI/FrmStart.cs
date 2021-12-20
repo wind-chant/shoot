@@ -33,7 +33,11 @@ namespace shoot.UI
             this.Height = height;//设置窗口的高度
 
         }
-
+        /// <summary>
+        /// 开始游戏
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             FrmMain form = new FrmMain(this);
