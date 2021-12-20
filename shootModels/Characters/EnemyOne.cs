@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Characters
 {
+    [Serializable]
     public class EnemyOne : SpaceShip
     {
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changeud = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
@@ -37,7 +38,7 @@ namespace shootModels.Characters
         /// <summary>
         /// 图片路径
         /// </summary>
-        static string imgPath = @"../../Resources/Images/spaceShip/enemy1.png";
+        static string imgPath = UpdateManager.getAtt("EnemyImagPathRoot");
         /// <summary>
         /// 图片
         /// </summary>
@@ -88,7 +89,8 @@ namespace shootModels.Characters
                 Direction = changeud[Direction];
             }
             {
-                if (new Random().Next(0, 100)%20 == 1 )
+                int rate = int.Parse(UpdateManager.getAtt("EnemyShootRate"));
+                if (new Random().Next(0, 100)% rate == 1 )
                 {
                     Fire();
                 }

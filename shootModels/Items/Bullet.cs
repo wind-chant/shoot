@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     /// <summary>
     /// 子弹基类
     /// </summary>
     public class Bullet : Item
     {
-        private static string imagesPath = @"../../Resources/Images/bullet/";
+        private static string imagesPath = UpdateManager.getAtt("BulletImagPathRoot");
 
         private static Dictionary<string, Image> images = new Dictionary<string, Image>()
         {

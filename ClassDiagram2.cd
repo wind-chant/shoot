@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="shoot.Program" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.Properties.Settings" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.UI.FrmLogin" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQgAAAAAACAAACAAAACAAAACAAAACAAAAgAAAAFhAEQ=</HashCode>
+      <FileName>UI\FrmLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.UI.FrmMain" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASACBAAECoBBiUAQACAgAADBAAAAEAAAAAMAAwIAAI=</HashCode>
+      <FileName>UI\FrmMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.UI.FrmRank" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAASAAAACAAgACACAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>UI\FrmRank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shoot.UI.FrmStart" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAACAAEASAQAGAQAACgAAAQAAAAGAEAAAAEQA=</HashCode>
+      <FileName>UI\FrmStart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="shootBLL.UserManager" Collapsed="true">
+    <Position X="25" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootDAL.DBHelper" Collapsed="true">
+    <Position X="24" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootDAL.FormService" Collapsed="true">
+    <Position X="25.75" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootDAL.UserService" Collapsed="true">
+    <Position X="24" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Characters.EnemyBoss" Collapsed="true">
+    <Position X="18.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Characters.EnemyOne" Collapsed="true">
+    <Position X="21" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Hero" Collapsed="true">
+    <Position X="23.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.SpaceShip" Collapsed="true">
+    <Position X="21" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Base" Collapsed="true">
+    <Position X="25.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.UpdateManager" Collapsed="true">
+    <Position X="34.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.User" Collapsed="true">
+    <Position X="36.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.General.Item" Collapsed="true">
+    <Position X="23.25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.BlooBar" Collapsed="true">
+    <Position X="30" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.Bomb" Collapsed="true">
+    <Position X="32.25" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.Buff" Collapsed="true">
+    <Position X="25.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.Bullet" Collapsed="true">
+    <Position X="27.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.ShootBulletByBoss" Collapsed="true">
+    <Position X="21.5" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.ShootingBehavior" Collapsed="true">
+    <Position X="26" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Items.ShootOneBulletByHero" Collapsed="true">
+    <Position X="26" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Tools.ShootBulletByEnemy" Collapsed="true">
+    <Position X="28.25" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Tools.ShootThreeBulletByHero" Collapsed="true">
+    <Position X="30.5" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="shootModels.Tools.ShootTwoBulletByHero" Collapsed="true">
+    <Position X="23.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="shootModels.General.SpaceShipDirection" Collapsed="true">
+    <Position X="34.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="shootModels.General.BulletDirection" Collapsed="true">
+    <Position X="34.75" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="shootModels.General.GameStatus" Collapsed="true">
+    <Position X="36.5" Y="8" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +43,10 @@ namespace shootModels
                 instance = new UpdateManager();
             }
             return instance;
+        }
+        public static void SetInstance(UpdateManager um)
+        {
+            instance = um;
         }
         /// <summary>
         /// 读取配置
@@ -236,5 +243,6 @@ namespace shootModels
         {
             return enemy.Count;
         }
+
     }
 }

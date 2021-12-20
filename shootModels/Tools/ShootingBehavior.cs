@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     public abstract class ShootingBehavior
     {
         //发射方

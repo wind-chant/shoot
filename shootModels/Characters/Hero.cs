@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace shootModels
 {
+    [Serializable]
     /// <summary>
     /// 玩家英雄类
     /// </summary>
@@ -25,7 +26,7 @@ namespace shootModels
         /// <summary>
         /// 图片路径
         /// </summary>
-        static string imgPath = @"../../Resources/Images/spaceShip/hero.png";
+        static string imgPath = UpdateManager.getAtt("HeroImagPathRoot");
         /// <summary>
         /// 图片
         /// </summary>

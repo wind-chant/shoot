@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Tools
 {
+    [Serializable]
     public class ShootThreeBulletByHero:ShootingBehavior
     {
         public ShootThreeBulletByHero(SpaceShip ship)
@@ -18,11 +19,15 @@ namespace shootModels.Tools
         {
             if (ship.Live)
             {
-                Bullet b = new Bullet(UpdateManager.GetInstance().Hero, 20, 20, 25, ship.Faction, BulletDirection.UL, 10);
+                int width = int.Parse(UpdateManager.getAtt("HeroBulletWidth"));
+                int height = int.Parse(UpdateManager.getAtt("HeroBulletHeight"));
+                int speed = int.Parse(UpdateManager.getAtt("HeroBulletSpeed"));
+                int power = int.Parse(UpdateManager.getAtt("HeroBulletPower"));
+                Bullet b = new Bullet(UpdateManager.GetInstance().Hero, width, height, speed, ship.Faction, BulletDirection.UL, power);
                 UpdateManager.GetInstance().AddElement(b);
-                b = new Bullet(UpdateManager.GetInstance().Hero, 20, 20, 25, ship.Faction, BulletDirection.UR, 10);
+                b = new Bullet(UpdateManager.GetInstance().Hero, width, height, speed, ship.Faction, BulletDirection.UR, power);
                 UpdateManager.GetInstance().AddElement(b);
-                b = new Bullet(UpdateManager.GetInstance().Hero, 20, 20, 25, ship.Faction, BulletDirection.U, 10);
+                b = new Bullet(UpdateManager.GetInstance().Hero, width, height, speed, ship.Faction, BulletDirection.U, power);
                 UpdateManager.GetInstance().AddElement(b);
             }
         }

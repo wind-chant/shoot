@@ -1,4 +1,5 @@
-﻿using shootDAL;
+﻿using shootBLL;
+using shootDAL;
 using shootModels;
 using System;
 using System.Collections.Generic;
@@ -14,42 +15,46 @@ namespace shoot.UI
 {
     public partial class FrmLogin : Form
     {
+        FrmStart frmStart;
+        public void flashPwd()
+        {
+            this.txtPassword.Text = "";
+        }
         public FrmLogin()
         {
             InitializeComponent();
+            frmStart = new FrmStart(this, null);
         }
-
-     
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            User user = new User(this.txtName.Text, this.txtPassword.Text);
-
-
-            user = UserService.register(user);
+            User user = UserManager.register(this.txtName.Text, this.txtPassword.Text);
 
             if (user != null)
             {
-                MessageBox.Show("注册成功");
                 this.Hide();
-                FrmStart f = new FrmStart(user);
-                f.Show();
+                frmStart.user = user;
+                frmStart.Show();
+            }
+            else
+            {
+                MessageBox.Show("用户名存在");
             }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            User user = new User(this.txtName.Text, this.txtPassword.Text);
-
-
-            user = UserService.login(user);
+            User user = UserManager.login(this.txtName.Text, this.txtPassword.Text);
 
             if (user != null)
             {
-                MessageBox.Show("登录成功");
                 this.Hide();
-                FrmStart f = new FrmStart(user);
-                f.Show();
+                frmStart.user = user;
+                frmStart.Show();
+            }
+            else
+            {
+                MessageBox.Show("用户名或密码错误");
             }
         }
     }

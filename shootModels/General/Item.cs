@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.General
 {
+    [Serializable]
     /// <summary>
     /// 物体类, 飞船, 子弹等
     /// </summary>

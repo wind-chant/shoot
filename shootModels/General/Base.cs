@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace shootModels
 {
+    [Serializable]
     /// <summary>
     /// 所有物品的基类
     /// </summary>

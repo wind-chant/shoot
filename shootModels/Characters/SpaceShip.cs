@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace shootModels
 {
+    [Serializable]
     /// <summary>
     /// 飞船类
     /// </summary>
@@ -117,7 +118,11 @@ namespace shootModels
         }
         protected void Draw(Graphics g, Image img, int x, int y)
         {
-            g.DrawImage(img, x, y);
+            try
+            {
+                g.DrawImage(img, x, y);
+            }
+            catch { }
         }
 
         public void SetShootBehavior(ShootingBehavior shootBehavior)

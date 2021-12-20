@@ -1,4 +1,5 @@
 ﻿
+using shootBLL;
 using shootModels;
 using shootModels.Characters;
 using shootModels.General;
@@ -32,16 +33,20 @@ namespace shoot.UI
         /// <summary>
         /// 界面位图
         /// </summary>
-        public static Bitmap backgroundImg = new Bitmap(@"../../Resources/Images/background.png");
+        public static Bitmap backgroundImg = new Bitmap(UpdateManager.getAtt("BackgroundImagPath"));
         /// <summary>
         /// 游戏状态
         /// </summary>
         private GameStatus status = GameStatus.INIT;
 
+        private static int bossWidth = int.Parse(UpdateManager.getAtt("EnemyBossWidth"));
+        private static int bossHeight = int.Parse(UpdateManager.getAtt("EnemyBossHeight"));
+        private static int bossSpeed = int.Parse(UpdateManager.getAtt("EnemyBossSpeed"));
+        private static int bossLife = int.Parse(UpdateManager.getAtt("EnemyBossLife"));
         /// <summary>
         /// boss
         /// </summary>
-        private EnemyBoss eBoss = new EnemyBoss(width / 2, 20, false, 200, 117, 10, 200);
+        private EnemyBoss eBoss = new EnemyBoss(width / 2, 20, false, bossWidth, bossHeight, bossSpeed, bossLife);
 
         ///背景滚动参数
         private int offset = 0;
@@ -97,7 +102,11 @@ namespace shoot.UI
             //游戏开始
             status = GameStatus.PLAYING;
         }
-     
+
+        private static int heroWidth = int.Parse(UpdateManager.getAtt("HeroWidth"));
+        private static int heroHeight = int.Parse(UpdateManager.getAtt("HeroHeight"));
+        private static int heroSpeed = int.Parse(UpdateManager.getAtt("HeroSpeed"));
+        private static int heroLife = int.Parse(UpdateManager.getAtt("HeroLife"));
         /// <summary>
         /// 加载窗口
         /// </summary>
@@ -110,7 +119,7 @@ namespace shoot.UI
             SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "bgm.wav");//   
             backgroundMusic.PlayLooping();
             //添加Hero
-            UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, 50, 45, 20, 100));
+            UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, heroWidth, heroHeight, heroSpeed, heroLife));
             //窗体加载后,启动线程,刷新界面
             pt = new Thread(new ThreadStart(PaintThread));
             pt.Start();
@@ -131,58 +140,49 @@ namespace shoot.UI
 
                 // 碰撞检测
                 UpdateManager.GetInstance().DoHitCheck();
-                if (UpdateManager.GetInstance().Hero.blb.NowLife <= 0)
+                if (UpdateManager.GetInstance().Hero.blb.NowLife <= 0)      //死亡
                 {
-                    if (MessageBox.Show("游戏结束，重新开始吗？", "游戏结束", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    {
-                        //清除所有的角色
-                        UpdateManager.GetInstance().Restart();
-                        //Hero复活
-                        UpdateManager.GetInstance().AddElement(new Hero(width / 2, height - 50, true, 50, 45, 20, 100));
-                        //老怪复活
-                        eBoss = new EnemyBoss(width / 2, 20, false, 200, 117, 10, 200);
-                        //小怪复活
-                        enemyCount = 0;
-                    }
-                    else
-                    {
-                        status = GameStatus.FAILED;
-                    }
+                    string gameoverPath = UpdateManager.getAtt("LoseImagPath");
+                    Image img = Image.FromFile(gameoverPath);
+                    gImg.DrawImage(img, width/2 - img.Width/2, height/2, img.Width, img.Height);
+                    frmStart.user.point = Math.Max(frmStart.user.point, UpdateManager.GetInstance().Hero.score);
+                    UserManager.ModifyUser(frmStart.user);
+                    changePoint("Point:" + UpdateManager.GetInstance().Hero.score);
+                    status = GameStatus.FAILED;
                 }
                 if (eBoss.blb.NowLife <= 0)
                 {
-                    if (MessageBox.Show("恭喜你，你赢了!还想再玩一局吗？", "胜利", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    {
-                        //清除所有的角色
-                        UpdateManager.GetInstance().Restart();
-                        //Hero复活
-                        UpdateManager.GetInstance().AddElement(new Hero(width / 2, height - 50, true, 50, 45, 20, 100));
-                        //老怪复活
-                        eBoss = new EnemyBoss(width / 2, 20, false, 100, 58, 10, 200);
-                        //小怪复活
-                        enemyCount = 0;
-                    }
-                    else
-                    {
-                        status = GameStatus.WON;
-                    }
+                    string gameoverPath = UpdateManager.getAtt("WonImagPath");
+                    Image img = Image.FromFile(gameoverPath);
+                    gImg.DrawImage(img, width / 2 - img.Width / 2, height / 2, img.Width, img.Height);
+                    frmStart.user.point = Math.Max(frmStart.user.point, UpdateManager.GetInstance().Hero.score);
+                    UserManager.ModifyUser(frmStart.user);
+                    changePoint("Point:" + UpdateManager.GetInstance().Hero.score);
+                    status = GameStatus.WON;
                 }
 
                 UpdateManager.GetInstance().Draw(gImg);
                 this.Invalidate();
                 Thread.Sleep(50);
             }
-            if (status == GameStatus.FAILED)
+        }
+
+        public void changePoint(string str)
+        {
+            if (lblPoint.InvokeRequired)
             {
-                //GameOver gameover = new GameOver(this.Width / 2 - 140, this.Height / 2 - 140);
-                //gameover.Draw(gImg);
-            }
-            if (status == GameStatus.WON)
-            {
-                //GameWin gameWin = new GameWin(this.Width / 2 - 180, this.Height / 2 - 140);
-                //gameWin.Draw(gImg);
+                // 当一个控件的InvokeRequired属性值为真时，说明有一个创建它以外的线程想访问它
+                Action<string> actionDelegate = (x) => 
+                { 
+                    this.lblPoint.Text = x;
+
+                    this.lblPoint.Visible = true;
+                    this.btnReturn.Visible = true;
+                };
+                this.lblPoint.Invoke(actionDelegate, str);
             }
         }
+
 
         private void GetEnemys()
         {
@@ -220,8 +220,14 @@ namespace shoot.UI
         /// <param name="g"></param>
         private void DrawBackground(Graphics g)
         {
-            g.DrawImage(backgroundImg, 0, offset - height, width, height);
-            g.DrawImage(backgroundImg, 0, offset, width, height);
+            try
+            {
+                g.DrawImage(backgroundImg, 0, offset - height, width, height);
+                g.DrawImage(backgroundImg, 0, offset, width, height);
+            }
+            catch (Exception ex)
+            {
+            }
 
             offset += 3;
             if (offset >= height) offset = 0;
@@ -229,22 +235,23 @@ namespace shoot.UI
 
         private void FrmMain_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImage(bufferImg, 0, 0);//把画布贴到画面上
+            try
+            {
+                e.Graphics.DrawImage(bufferImg, 0, 0);//把画布贴到画面上
+            }
+            catch (Exception ex)
+            { 
+            }
         }
 
         /// <summary>
         /// 清理资源
         /// </summary>
-        private void DisResource()
+        public void DisResource()
         {
             status = GameStatus.INIT;
             //等待线程结束
             pt.Join();
-
-            bufferImg.Dispose();
-            gImg.Dispose();
-            backgroundImg.Dispose();
-            frmStart.Dispose();
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -255,7 +262,13 @@ namespace shoot.UI
             }
             else
             {
+                frmStart.save_game();
                 DisResource();
+                bufferImg.Dispose();
+                gImg.Dispose();
+                backgroundImg.Dispose();
+                frmStart.frmLogin.Close();
+                frmStart.Close();
             }
         }
 
@@ -267,6 +280,14 @@ namespace shoot.UI
         private void FrmMain_KeyUp(object sender, KeyEventArgs e)
         {
             UpdateManager.GetInstance().Hero.KeyUp(e);
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            DisResource();
+            UpdateManager.GetInstance().Restart();
+            this.Hide();
+            frmStart.Show();
         }
     }
 }

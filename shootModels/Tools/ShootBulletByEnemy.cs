@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Tools
 {
+    [Serializable]
     public class ShootBulletByEnemy : ShootingBehavior
     {
         public ShootBulletByEnemy(SpaceShip ship)
@@ -16,7 +17,11 @@ namespace shootModels.Tools
         }
         public override void Fire()
         {
-            Bullet b = new Bullet(ship, 15, 37, 25, ship.Faction, BulletDirection.D, 10);
+            int width = int.Parse(UpdateManager.getAtt("EnemyBulletWidth"));
+            int height = int.Parse(UpdateManager.getAtt("EnemyBulletHeight"));
+            int speed = int.Parse(UpdateManager.getAtt("EnemyBulletSpeed"));
+            int power = int.Parse(UpdateManager.getAtt("EnemyBulletPower"));
+            Bullet b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.D, power);
             UpdateManager.GetInstance().AddElement(b);
         }
     }

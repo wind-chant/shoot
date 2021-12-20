@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     public class ShootBulletByBoss : ShootingBehavior
     {
         public ShootBulletByBoss(SpaceShip ship)
@@ -16,61 +17,65 @@ namespace shootModels.Items
 
         public override void Fire()
         {
+            int width = int.Parse(UpdateManager.getAtt("EnemyBossBulletWidth"));
+            int height = int.Parse(UpdateManager.getAtt("EnemyBossBulletHeight"));
+            int speed = int.Parse(UpdateManager.getAtt("EnemyBossBulletSpeed"));
+            int power = int.Parse(UpdateManager.getAtt("EnemyBossBulletPower"));
             Bullet b;
-            switch (UpdateManager.random.Next(0, 3))
+            switch (UpdateManager.random.Next(3))
             {
                 case 0:
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.U, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.U, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.D, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.D, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.L, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.L, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.R, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.R, power);
                     UpdateManager.GetInstance().AddElement(b);
                     break;
                 case 1:
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.RU, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.RU, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.UR, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.UR, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.LD, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.LD, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.DL, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.DL, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.RD, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.RD, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.DR, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.DR, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.LU, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.LU, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.UL, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.UL, power);
                     UpdateManager.GetInstance().AddElement(b);
                     break;
                 case 2:
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.U, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.U, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.D, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.D, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.L, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.L, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.R, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.R, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.RU, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.RU, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.UR, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.UR, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.LD, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.LD, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.DL, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.DL, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.RD, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.RD, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.DR, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.DR, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.LU, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.LU, power);
                     UpdateManager.GetInstance().AddElement(b);
-                    b = new Bullet(ship, 20, 20, 20, ship.Faction, BulletDirection.UL, 10);
+                    b = new Bullet(ship, width, height, speed, ship.Faction, BulletDirection.UL, power);
                     break;
                 default: break;
             }

@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     public class Buff : Item
     {
 
-        private static string imagesPath = @"../../Resources/Images/buff/";
+        private static string imagesPath = UpdateManager.getAtt("BuffImagPathRoot");
 
         private static Dictionary<string, Image> images = new Dictionary<string, Image>()
         {

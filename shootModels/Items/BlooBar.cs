@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     /// <summary>
     /// 血条类
     /// </summary>
@@ -15,11 +16,11 @@ namespace shootModels.Items
         /// <summary>
         /// 血条单位宽度
         /// </summary>
-        private readonly int width = 1;
+        private readonly int width = int.Parse(UpdateManager.getAtt("BlooBarWidth"));
         /// <summary>
         /// 血条高度
         /// </summary>
-        private readonly int height = 10;
+        private readonly int height = int.Parse(UpdateManager.getAtt("BlooBarHeight"));
         /// <summary>
         /// 所有生命值
         /// </summary>

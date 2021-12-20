@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace shootModels.Items
 {
+    [Serializable]
     /// <summary>
     /// 爆炸
     /// </summary>
     public class Bomb:Base
     {
         private int step = 0;//画到第几个图片
-        private static string imagesPath = @"../../Resources/Images/bomb/";
+        private static string imagesPath = UpdateManager.getAtt("BombImagPathRoot");
 
         private static Image[] images = new Image[]
         {
