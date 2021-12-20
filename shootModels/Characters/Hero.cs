@@ -12,12 +12,14 @@ using System.Windows.Forms;
 
 namespace shootModels
 {
+    #region 玩家
     [Serializable]
     /// <summary>
     /// 玩家英雄类
     /// </summary>
     public class Hero : SpaceShip
     {
+        #region 参数
         private string str = "";
         /// <summary>
         /// 得分
@@ -35,12 +37,14 @@ namespace shootModels
         private bool U = false, D = false, L = false, R = false;
         public BlooBar blb = null;
 
+        #endregion
+
         public Hero(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)
         {
             blb = new BlooBar(x, y, life, width);
             SetShootBehavior(new ShootOneBulletByHero(this));
         }
-
+        #region
         /// <summary>
         /// 按下按键
         /// </summary>
@@ -65,7 +69,10 @@ namespace shootModels
             }
             ConfirmRolesDirection();
         }
-
+        /// <summary>
+        /// 按键抬起
+        /// </summary>
+        /// <param name="e"></param>
         public void KeyUp(KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -153,6 +160,10 @@ namespace shootModels
             blb.Y = Y;
         }
 
+        /// <summary>
+        /// 拾取Buff
+        /// </summary>
+        /// <param name="b"></param>
         public void AddBuff(Buff b)
         {
             if(b.Name == "hp")
@@ -167,5 +178,7 @@ namespace shootModels
                     ShootBehavior = new ShootThreeBulletByHero(this);
             }
         }
+        #endregion
     }
+    #endregion
 }

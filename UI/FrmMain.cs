@@ -20,8 +20,10 @@ using System.Windows.Forms;
 
 namespace shoot.UI
 {
+    #region 游戏主窗口
     public partial class FrmMain : Form
     {
+        #region 参数定义
         /// <summary>
         /// 窗口宽度
         /// </summary>
@@ -38,7 +40,23 @@ namespace shoot.UI
         /// 游戏状态
         /// </summary>
         private GameStatus status = GameStatus.INIT;
-
+        /// <summary>
+        /// 小怪数据
+        /// </summary>
+        private static int enemyWidth = int.Parse(UpdateManager.getAtt("EnemyWidth"));
+        private static int enemyHeight = int.Parse(UpdateManager.getAtt("EnemyHeight"));
+        private static int enemySpeed = int.Parse(UpdateManager.getAtt("EnemySpeed"));
+        private static int enemyLife = int.Parse(UpdateManager.getAtt("EnemyLife"));
+        /// <summary>
+        /// 英雄数据
+        /// </summary>
+        private static int heroWidth = int.Parse(UpdateManager.getAtt("HeroWidth"));
+        private static int heroHeight = int.Parse(UpdateManager.getAtt("HeroHeight"));
+        private static int heroSpeed = int.Parse(UpdateManager.getAtt("HeroSpeed"));
+        private static int heroLife = int.Parse(UpdateManager.getAtt("HeroLife"));
+        /// <summary>
+        /// boss数据
+        /// </summary>
         private static int bossWidth = int.Parse(UpdateManager.getAtt("EnemyBossWidth"));
         private static int bossHeight = int.Parse(UpdateManager.getAtt("EnemyBossHeight"));
         private static int bossSpeed = int.Parse(UpdateManager.getAtt("EnemyBossSpeed"));
@@ -48,7 +66,9 @@ namespace shoot.UI
         /// </summary>
         private EnemyBoss eBoss = new EnemyBoss(width / 2, 20, false, bossWidth, bossHeight, bossSpeed, bossLife);
 
-        ///背景滚动参数
+        /// <summary>
+        /// 背景滚动参数
+        /// </summary>
         private int offset = 0;
 
         //双缓冲用到的变量
@@ -61,29 +81,31 @@ namespace shoot.UI
         /// 内存画布
         /// </summary>
         private Graphics gImg = null;
-
+        /// <summary>
+        /// 绘图线程
+        /// </summary>
         Thread pt = null;
 
-        /// <summary>
-        /// 用于随机产生敌人
-        /// </summary>
-        public static Random enemyRandom = new Random();
         /// <summary>
         /// 敌人的总个数
         /// </summary>
         int enemyCount = 0;
-        private static int enemyU = 20;
+        private static int enemyU = int.Parse(UpdateManager.getAtt("EnemyCount"));
         /// <summary>
         /// 开始界面
         /// </summary>
         public FrmStart frmStart = null;
 
+        #endregion
+
+        #region 方法
         public FrmMain(FrmStart frmStart)
         {
             InitializeComponent();
             this.frmStart = frmStart;
             InitForm();
         }
+
         /// <summary>
         ///  设置窗口
         /// </summary>
@@ -103,10 +125,6 @@ namespace shoot.UI
             status = GameStatus.PLAYING;
         }
 
-        private static int heroWidth = int.Parse(UpdateManager.getAtt("HeroWidth"));
-        private static int heroHeight = int.Parse(UpdateManager.getAtt("HeroHeight"));
-        private static int heroSpeed = int.Parse(UpdateManager.getAtt("HeroSpeed"));
-        private static int heroLife = int.Parse(UpdateManager.getAtt("HeroLife"));
         /// <summary>
         /// 加载窗口
         /// </summary>
@@ -150,7 +168,7 @@ namespace shoot.UI
                     changePoint("Point:" + UpdateManager.GetInstance().Hero.score);
                     status = GameStatus.FAILED;
                 }
-                if (eBoss.blb.NowLife <= 0)
+                if (eBoss.blb.NowLife <= 0)                             //获胜
                 {
                     string gameoverPath = UpdateManager.getAtt("WonImagPath");
                     Image img = Image.FromFile(gameoverPath);
@@ -167,6 +185,10 @@ namespace shoot.UI
             }
         }
 
+        /// <summary>
+        /// 为绘图线程创建委托,修改分数label和按钮显示
+        /// </summary>
+        /// <param name="str"></param>
         public void changePoint(string str)
         {
             if (lblPoint.InvokeRequired)
@@ -186,22 +208,25 @@ namespace shoot.UI
 
         private void GetEnemys()
         {
-            if (enemyCount == -1)
+            if (enemyCount == -1)               //打boss,不在生成小怪
             {
                 return;
             }
-            if (enemyRandom.Next(0, 1000) < 10)
+            if (UpdateManager.random.Next(int.Parse(UpdateManager.getAtt("BuffRate"))) < 1)        //千分之十生成buff
             {
-                Buff buff = new Buff(enemyRandom.Next(0, width), 0, true, 50, 50, 5, enemyRandom.Next(0, 2) == 0 ? "hp" : "bulletCount");
+                int BlooBarWidth = int.Parse(UpdateManager.getAtt("BlooBarWidth"));
+                int BlooBarHeight = int.Parse(UpdateManager.getAtt("BlooBarHeight"));
+                int BlooBarSpeed = int.Parse(UpdateManager.getAtt("BlooBarSpeed"));
+                Buff buff = new Buff(UpdateManager.random.Next(0, width), 0, true, BlooBarWidth, BlooBarHeight, BlooBarSpeed, UpdateManager.random.Next(0, 2) == 0 ? "hp" : "bulletCount");
                 UpdateManager.GetInstance().AddElement(buff);
             }
 
             if (enemyCount < enemyU && UpdateManager.GetInstance().getEnemyCount()<8)
             {
                 SpaceShip enemy;
-                if (enemyRandom.Next(0, 200) < 20)
+                if (UpdateManager.random.Next(0, 200) < 20)
                 {
-                    enemy = new EnemyOne(enemyRandom.Next(0, width), 0, false, 80, 69, 10, 30);
+                    enemy = new EnemyOne(UpdateManager.random.Next(0, width), 0, false, enemyWidth, enemyHeight, enemySpeed, enemyLife);
                     UpdateManager.GetInstance().AddElement(enemy);
                     enemyCount++;
                 }
@@ -289,5 +314,8 @@ namespace shoot.UI
             this.Hide();
             frmStart.Show();
         }
+
+        #endregion
     }
+#endregion
 }

@@ -13,13 +13,19 @@ using System.Windows.Forms;
 
 namespace shoot.UI
 {
+    #region 登陆界面
     public partial class FrmLogin : Form
     {
         FrmStart frmStart;
+
+        /// <summary>
+        /// 登出后清空密码
+        /// </summary>
         public void flashPwd()
         {
             this.txtPassword.Text = "";
         }
+        
         public FrmLogin()
         {
             InitializeComponent();
@@ -58,4 +64,5 @@ namespace shoot.UI
             }
         }
     }
+    #endregion
 }

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace shoot.UI
 {
+    #region 排行界面
     public partial class FrmRank : Form
     {
         FrmStart frmStart;
@@ -25,7 +26,7 @@ namespace shoot.UI
         {
             DataTable dt = UserManager.getRankTable();
             DataView dv = dt.DefaultView;
-            dv.Sort = "point desc";
+            dv.Sort = "point desc";             //分数降序排列
             dgvRank.DataSource = dv;
         }
 
@@ -35,4 +36,5 @@ namespace shoot.UI
             frmStart.Show();
         }
     }
+    #endregion
 }

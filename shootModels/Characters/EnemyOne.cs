@@ -10,9 +10,17 @@ using System.Threading.Tasks;
 
 namespace shootModels.Characters
 {
+    #region 小怪
+    /// <summary>
+    /// 小怪类
+    /// </summary>
     [Serializable]
     public class EnemyOne : SpaceShip
     {
+        #region 参数
+        /// <summary>
+        /// 碰到上下边转向
+        /// </summary>
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changeud = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
         {
             {SpaceShipDirection.U, SpaceShipDirection.D },
@@ -23,7 +31,10 @@ namespace shootModels.Characters
             {SpaceShipDirection.LD, SpaceShipDirection.LU },
             {SpaceShipDirection.L, SpaceShipDirection.R },
             {SpaceShipDirection.LU, SpaceShipDirection.LD },
-        }; 
+        };
+        /// <summary>
+        /// 碰到左右边转向
+        /// </summary>
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changelr = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
         {
             {SpaceShipDirection.U, SpaceShipDirection.D },
@@ -43,6 +54,7 @@ namespace shootModels.Characters
         /// 图片
         /// </summary>
         private Image img = Image.FromFile(imgPath);
+        #endregion
         public EnemyOne(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)
         {
             Array values = (Enum.GetValues(typeof(SpaceShipDirection)));
@@ -97,4 +109,5 @@ namespace shootModels.Characters
             }
         }
     }
+    #endregion
 }

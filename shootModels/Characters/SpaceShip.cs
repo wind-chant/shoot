@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace shootModels
 {
+    #region 飞船类
     [Serializable]
     /// <summary>
     /// 飞船类
     /// </summary>
     public abstract class SpaceShip : Item
     {
+        #region 参数
         private readonly double COS45 = 1.414;
         // 生命值
         private int life;
@@ -44,6 +46,10 @@ namespace shootModels
             set { life = value; }
             get { return life; }
         }
+
+        #endregion
+
+        #region 方法
         /// <summary>
         /// 死亡
         /// </summary>
@@ -129,5 +135,7 @@ namespace shootModels
         {
             this.shootBehavior = shootBehavior;
         }
+        #endregion
     }
+    #endregion
 }

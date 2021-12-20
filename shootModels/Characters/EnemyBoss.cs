@@ -9,9 +9,17 @@ using System.Threading.Tasks;
 
 namespace shootModels.Characters
 {
+    #region boss
+    /// <summary>
+    /// boss类
+    /// </summary>
     [Serializable]
     public class EnemyBoss : SpaceShip
     {
+        #region 参数
+        /// <summary>
+        /// 碰到上下边转向
+        /// </summary>
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changeud = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
         {
             {SpaceShipDirection.U, SpaceShipDirection.D },
@@ -23,6 +31,9 @@ namespace shootModels.Characters
             {SpaceShipDirection.L, SpaceShipDirection.R },
             {SpaceShipDirection.LU, SpaceShipDirection.RD },
         };
+        /// <summary>
+        /// 碰到左右边转向
+        /// </summary>
         private static Dictionary<SpaceShipDirection, SpaceShipDirection> changelr = new Dictionary<SpaceShipDirection, SpaceShipDirection>()
         {
             {SpaceShipDirection.U, SpaceShipDirection.D },
@@ -42,8 +53,8 @@ namespace shootModels.Characters
         /// 图片
         /// </summary>
         private Image img = Image.FromFile(imgPath);
-
         public BlooBar blb;
+        #endregion
         public EnemyBoss(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)
         {
             Array values = (Enum.GetValues(typeof(SpaceShipDirection)));
@@ -105,6 +116,6 @@ namespace shootModels.Characters
             blb.X = X;
             blb.Y = Y;
         }
-
     }
+    #endregion
 }

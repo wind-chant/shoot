@@ -16,8 +16,10 @@ using System.Windows.Forms;
 
 namespace shoot.UI
 {
+    #region 登录界面
     public partial class FrmStart : Form
     {
+        #region 参数
         public FrmLogin frmLogin;
         public FrmMain frmMain;
         public FrmRank frmRank;
@@ -30,6 +32,9 @@ namespace shoot.UI
         /// 窗口高度
         /// </summary>
         private readonly int height = int.Parse(UpdateManager.getAtt("height"));
+        #endregion
+
+        #region 方法
         public FrmStart(FrmLogin frmLogin, User user)
         {
             InitializeComponent();
@@ -104,5 +109,7 @@ namespace shoot.UI
             frmMain.Show();
             this.Hide();
         }
+        #endregion
     }
+    #endregion
 }
