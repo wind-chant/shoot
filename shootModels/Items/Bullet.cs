@@ -139,7 +139,7 @@ namespace shootModels.Items
                     break;
                 default: break;
             }
-            if (X < 0 || Y < 0 || X > UpdateManager.getWidth() || Y > UpdateManager.getHeight())
+            if (X < 0 || Y < 0 || X > int.Parse(UpdateManager.getAtt("width")) || Y > int.Parse(UpdateManager.getAtt("height")))
             {
                 Live = false;
             }

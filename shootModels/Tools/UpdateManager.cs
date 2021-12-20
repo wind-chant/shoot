@@ -41,25 +41,11 @@ namespace shootModels
             return instance;
         }
         /// <summary>
-        /// 窗口宽度
-        /// </summary>
-        public static int getWidth()
-        {
-            return int.Parse(ConfigurationManager.AppSettings["width"].ToString());
-        }
-        /// <summary>
-        /// 窗口高度
-        /// </summary>
-        public static int getHeight()
-        {
-            return int.Parse(ConfigurationManager.AppSettings["height"].ToString());
-        }
-        /// <summary>
         /// 读取配置
         /// </summary>
         /// <param name="str">配置名称</param>
         /// <returns></returns>
-        public static string getatt(string str)
+        public static string getAtt(string str)
         {
             return ConfigurationManager.AppSettings[str].ToString();
         }

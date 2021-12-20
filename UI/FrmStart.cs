@@ -1,4 +1,5 @@
-﻿using shootBLL;
+﻿
+using shootModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,11 @@ namespace shoot.UI
         /// <summary>
         /// 窗口宽度
         /// </summary>
-        private readonly int width = FormManager.getWidth();
+        private readonly int width = int.Parse(UpdateManager.getAtt("width"));
         /// <summary>
         /// 窗口高度
         /// </summary>
-        private readonly int height = FormManager.getHeight();
+        private readonly int height = int.Parse(UpdateManager.getAtt("height"));
         public FrmStart()
         {
             InitializeComponent();

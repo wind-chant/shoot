@@ -137,8 +137,8 @@ namespace shootModels
 
         protected override void Move()
         {
-            int frmWidth = int.Parse(UpdateManager.getatt("width"));
-            int frmHeight = int.Parse(UpdateManager.getatt("height"));
+            int frmWidth = int.Parse(UpdateManager.getAtt("width"));
+            int frmHeight = int.Parse(UpdateManager.getAtt("height"));
             base.Move();
 
             //超出边界检测

@@ -56,7 +56,7 @@ namespace shootModels.Items
         {
             Y = Y + Speed;
 
-            if (Y > UpdateManager.getHeight())
+            if (Y > int.Parse(UpdateManager.getAtt("height")))
             {
                 Live = false;
             }

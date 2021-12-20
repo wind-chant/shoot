@@ -1,4 +1,4 @@
-﻿using shootBLL;
+﻿
 using shootModels;
 using shootModels.Characters;
 using shootModels.General;
@@ -24,11 +24,11 @@ namespace shoot.UI
         /// <summary>
         /// 窗口宽度
         /// </summary>
-        private static readonly int width = FormManager.getWidth();
+        private static readonly int width = int.Parse(UpdateManager.getAtt("width"));
         /// <summary>
         /// 窗口高度
         /// </summary>
-        private static readonly int height = FormManager.getHeight();
+        private static readonly int height = int.Parse(UpdateManager.getAtt("height"));
         /// <summary>
         /// 界面位图
         /// </summary>
@@ -110,7 +110,7 @@ namespace shoot.UI
             SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "bgm.wav");//   
             backgroundMusic.PlayLooping();
             //添加Hero
-            UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, 50, 45, 20, 10000));
+            UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, 50, 45, 20, 100));
             //窗体加载后,启动线程,刷新界面
             pt = new Thread(new ThreadStart(PaintThread));
             pt.Start();
