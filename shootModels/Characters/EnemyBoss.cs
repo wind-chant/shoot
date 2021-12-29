@@ -3,9 +3,6 @@ using shootModels.Items;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace shootModels.Characters
 {
@@ -46,13 +43,9 @@ namespace shootModels.Characters
             {SpaceShipDirection.LU, SpaceShipDirection.RU },
         };
         /// <summary>
-        /// 图片路径
-        /// </summary>
-        static string imgPath = UpdateManager.getAtt("EnemyBossImagPathRoot");
-        /// <summary>
         /// 图片
         /// </summary>
-        private Image img = Image.FromFile(imgPath);
+        private Image img = global::shootModels.Properties.Resources.boss;
         public BlooBar blb;
         #endregion
         public EnemyBoss(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)

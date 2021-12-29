@@ -74,6 +74,11 @@
     <Compile Include="Items\Bomb.cs" />
     <Compile Include="Items\buff.cs" />
     <Compile Include="Items\Bullet.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tools\ShootBulletByBoss.cs" />
     <Compile Include="Tools\ShootBulletByEnemy.cs" />
     <Compile Include="Tools\ShootOneBulletByHero.cs" />
@@ -85,10 +90,145 @@
     <Compile Include="Tools\UpdateManager.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\won.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boss.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enemy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_D.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_DL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_DR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_L.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_LD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_LU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_R.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_RD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_RU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_U.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_UL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletBoss_UR.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletEnemy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_D.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_L.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_LD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_LDD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_LU.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_LUU.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_R.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_RD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_RDD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_RU.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_RUU.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletHero_U.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bulletCount.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bomb_8.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgm.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

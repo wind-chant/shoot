@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shootDAL", "shootDAL\shootD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shootModels", "shootModels\shootModels.csproj", "{06429168-3F81-4CF6-9567-2416F22E4794}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "..\Setup1\Setup1.vdproj", "{7D92D843-10F3-4FCA-9648-5C55CF0710B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{06429168-3F81-4CF6-9567-2416F22E4794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06429168-3F81-4CF6-9567-2416F22E4794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06429168-3F81-4CF6-9567-2416F22E4794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D92D843-10F3-4FCA-9648-5C55CF0710B5}.Debug|Any CPU.ActiveCfg = Debug
+		{7D92D843-10F3-4FCA-9648-5C55CF0710B5}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,12 +12,10 @@ namespace shootModels.Items
     public class Buff : Item
     {
 
-        private static string imagesPath = UpdateManager.getAtt("BuffImagPathRoot");
-
         private static Dictionary<string, Image> images = new Dictionary<string, Image>()
         {
-           {"bulletCount",Image.FromFile(imagesPath+"bulletCount.png")},
-           {"hp",Image.FromFile(imagesPath+"hp.png")}
+           {"bulletCount",global::shootModels.Properties.Resources.bulletCount},
+           {"hp",global::shootModels.Properties.Resources.hp}
         };
         private string name;
 

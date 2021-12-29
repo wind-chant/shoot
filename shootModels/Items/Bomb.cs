@@ -14,19 +14,18 @@ namespace shootModels.Items
     public class Bomb:Base
     {
         private int step = 0;//画到第几个图片
-        private static string imagesPath = UpdateManager.getAtt("BombImagPathRoot");
 
         private static Image[] images = new Image[]
         {
-            Image.FromFile(imagesPath + "bomb_0.gif"),
-            Image.FromFile(imagesPath + "bomb_1.gif"),
-            Image.FromFile(imagesPath + "bomb_2.gif"),
-            Image.FromFile(imagesPath + "bomb_3.gif"),
-            Image.FromFile(imagesPath + "bomb_4.gif"),
-            Image.FromFile(imagesPath + "bomb_5.gif"),
-            Image.FromFile(imagesPath + "bomb_6.gif"),
-            Image.FromFile(imagesPath + "bomb_7.gif"),
-            Image.FromFile(imagesPath + "bomb_8.gif"),
+            global::shootModels.Properties.Resources.bomb_0,
+            global::shootModels.Properties.Resources.bomb_1,
+            global::shootModels.Properties.Resources.bomb_2,
+            global::shootModels.Properties.Resources.bomb_3,
+            global::shootModels.Properties.Resources.bomb_4,
+            global::shootModels.Properties.Resources.bomb_5,
+            global::shootModels.Properties.Resources.bomb_6,
+            global::shootModels.Properties.Resources.bomb_7,
+            global::shootModels.Properties.Resources.bomb_8,
         };
 
         public Bomb(SpaceShip ship)

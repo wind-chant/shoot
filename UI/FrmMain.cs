@@ -35,7 +35,7 @@ namespace shoot.UI
         /// <summary>
         /// 界面位图
         /// </summary>
-        public static Bitmap backgroundImg = new Bitmap(UpdateManager.getAtt("BackgroundImagPath"));
+        public static Bitmap backgroundImg = new Bitmap(global::shootModels.Properties.Resources.background/*UpdateManager.getAtt("BackgroundImagPath")*/);
         /// <summary>
         /// 游戏状态
         /// </summary>
@@ -133,8 +133,7 @@ namespace shoot.UI
         private void FrmMain_Load(object sender, EventArgs e)
         {
             //添加背景音乐
-            String musicPath = @"../../Resources/music/";
-            SoundPlayer backgroundMusic = new SoundPlayer(musicPath + "bgm.wav");//   
+            SoundPlayer backgroundMusic = new SoundPlayer(global::shootModels.Properties.Resources.bgm);//   
             backgroundMusic.PlayLooping();
             //添加Hero
             UpdateManager.GetInstance().AddElement(new Hero(width/2, height - 50, true, heroWidth, heroHeight, heroSpeed, heroLife));
@@ -160,8 +159,7 @@ namespace shoot.UI
                 UpdateManager.GetInstance().DoHitCheck();
                 if (UpdateManager.GetInstance().Hero.blb.NowLife <= 0)      //死亡
                 {
-                    string gameoverPath = UpdateManager.getAtt("LoseImagPath");
-                    Image img = Image.FromFile(gameoverPath);
+                    Image img = global::shootModels.Properties.Resources.lose;
                     gImg.DrawImage(img, width/2 - img.Width/2, height/2, img.Width, img.Height);
                     frmStart.user.point = Math.Max(frmStart.user.point, UpdateManager.GetInstance().Hero.score);
                     UserManager.ModifyUser(frmStart.user);
@@ -170,8 +168,7 @@ namespace shoot.UI
                 }
                 if (eBoss.blb.NowLife <= 0)                             //获胜
                 {
-                    string gameoverPath = UpdateManager.getAtt("WonImagPath");
-                    Image img = Image.FromFile(gameoverPath);
+                    Image img = global::shootModels.Properties.Resources.won;
                     gImg.DrawImage(img, width / 2 - img.Width / 2, height / 2, img.Width, img.Height);
                     frmStart.user.point = Math.Max(frmStart.user.point, UpdateManager.GetInstance().Hero.score);
                     UserManager.ModifyUser(frmStart.user);

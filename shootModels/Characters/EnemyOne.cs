@@ -47,13 +47,9 @@ namespace shootModels.Characters
             {SpaceShipDirection.LU, SpaceShipDirection.RU },
         };
         /// <summary>
-        /// 图片路径
-        /// </summary>
-        static string imgPath = UpdateManager.getAtt("EnemyImagPathRoot");
-        /// <summary>
         /// 图片
         /// </summary>
-        private Image img = Image.FromFile(imgPath);
+        private Image img = global::shootModels.Properties.Resources.enemy1;
         #endregion
         public EnemyOne(int x, int y, bool faction, int width, int height, int speed, int life) : base(x, y, faction, width, height, speed, life)
         {

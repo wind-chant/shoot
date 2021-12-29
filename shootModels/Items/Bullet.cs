@@ -15,38 +15,36 @@ namespace shootModels.Items
     /// </summary>
     public class Bullet : Item
     {
-        private static string imagesPath = UpdateManager.getAtt("BulletImagPathRoot");
-
         private static Dictionary<string, Image> images = new Dictionary<string, Image>()
         {
-           {"enemy",Image.FromFile(imagesPath+"bulletEnemy.png")},
-           {"L",Image.FromFile(imagesPath+"bulletHero_L.gif")},
-           {"LU",Image.FromFile(imagesPath+"bulletHero_LU.gif")},
-           {"UL",Image.FromFile(imagesPath+"bulletHero_LUU.gif")},
-           {"U",Image.FromFile(imagesPath+"bulletHero_U.gif")},
-           {"UR",Image.FromFile(imagesPath+"bulletHero_RUU.gif")},
-           {"RU",Image.FromFile(imagesPath+"bulletHero_RU.gif")},
-           {"R",Image.FromFile(imagesPath+"bulletHero_R.gif")},
-           {"RD",Image.FromFile(imagesPath+"bulletHero_RD.gif")},
-           {"DR",Image.FromFile(imagesPath+"bulletHero_RDD.gif")},
-           {"D",Image.FromFile(imagesPath+"bulletHero_D.gif")},
-           {"DL",Image.FromFile(imagesPath+"bulletHero_LDD.gif")},
-           {"LD",Image.FromFile(imagesPath+"bulletHero_LD.gif")}
+           {"enemy",global::shootModels.Properties.Resources.bulletEnemy},
+           {"L",global::shootModels.Properties.Resources.bulletHero_L},
+           {"LU",global::shootModels.Properties.Resources.bulletHero_LU},
+           {"UL",global::shootModels.Properties.Resources.bulletHero_LUU},
+           {"U",global::shootModels.Properties.Resources.bulletHero_U},
+           {"UR",global::shootModels.Properties.Resources.bulletHero_RUU},
+           {"RU",global::shootModels.Properties.Resources.bulletHero_RU},
+           {"R",global::shootModels.Properties.Resources.bulletHero_R},
+           {"RD",global::shootModels.Properties.Resources.bulletHero_RD},
+           {"DR",global::shootModels.Properties.Resources.bulletHero_RDD},
+           {"D",global::shootModels.Properties.Resources.bulletHero_D},
+           {"DL",global::shootModels.Properties.Resources.bulletHero_LDD},
+           {"LD",global::shootModels.Properties.Resources.bulletHero_LD}
         };
         private static Dictionary<string, Image> imagesBoss = new Dictionary<string, Image>()
         {
-           {"L",Image.FromFile(imagesPath+"bulletBoss_L.png")},
-           {"LU",Image.FromFile(imagesPath+"bulletBoss_LU.png")},
-           {"UL",Image.FromFile(imagesPath+"bulletBoss_UL.png")},
-           {"U",Image.FromFile(imagesPath+"bulletBoss_U.png")},
-           {"UR",Image.FromFile(imagesPath+"bulletBoss_UR.png")},
-           {"RU",Image.FromFile(imagesPath+"bulletBoss_RU.png")},
-           {"R",Image.FromFile(imagesPath+"bulletBoss_R.png")},
-           {"RD",Image.FromFile(imagesPath+"bulletBoss_RD.png")},
-           {"DR",Image.FromFile(imagesPath+"bulletBoss_DR.png")},
-           {"D",Image.FromFile(imagesPath+"bulletBoss_D.png")},
-           {"DL",Image.FromFile(imagesPath+"bulletBoss_DL.png")},
-           {"LD",Image.FromFile(imagesPath+"bulletBoss_LD.png")}
+           {"L",global::shootModels.Properties.Resources.bulletBoss_L},
+           {"LU",global::shootModels.Properties.Resources.bulletBoss_LU},
+           {"UL",global::shootModels.Properties.Resources.bulletBoss_UL},
+           {"U",global::shootModels.Properties.Resources.bulletBoss_U},
+           {"UR",global::shootModels.Properties.Resources.bulletBoss_UR},
+           {"RU",global::shootModels.Properties.Resources.bulletBoss_RU},
+           {"R",global::shootModels.Properties.Resources.bulletBoss_R},
+           {"RD",global::shootModels.Properties.Resources.bulletBoss_RD},
+           {"DR",global::shootModels.Properties.Resources.bulletBoss_DR},
+           {"D",global::shootModels.Properties.Resources.bulletBoss_D},
+           {"DL",global::shootModels.Properties.Resources.bulletBoss_DL},
+           {"LD",global::shootModels.Properties.Resources.bulletBoss_LD}
         };
         public static BulletDirection[] BulletDirections = new BulletDirection[]
 {

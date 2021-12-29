@@ -96,15 +96,6 @@
     <Compile Include="UI\FrmStart.Designer.cs">
       <DependentUpon>FrmStart.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,49 +138,6 @@
       <Project>{06429168-3f81-4cf6-9567-2416f22e4794}</Project>
       <Name>shootModels</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Images\background.png" />
-    <Content Include="Resources\Images\bomb\bomb_0.gif" />
-    <Content Include="Resources\Images\bomb\bomb_1.gif" />
-    <Content Include="Resources\Images\bomb\bomb_2.gif" />
-    <Content Include="Resources\Images\bomb\bomb_3.gif" />
-    <Content Include="Resources\Images\bomb\bomb_4.gif" />
-    <Content Include="Resources\Images\bomb\bomb_5.gif" />
-    <Content Include="Resources\Images\bomb\bomb_6.gif" />
-    <Content Include="Resources\Images\bomb\bomb_7.gif" />
-    <Content Include="Resources\Images\bomb\bomb_8.gif" />
-    <Content Include="Resources\Images\buff\bulletCount.png" />
-    <Content Include="Resources\Images\buff\hp.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_D.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_DL.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_DR.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_L.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_LD.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_LU.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_R.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_RD.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_RU.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_U.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_UL.png" />
-    <Content Include="Resources\Images\bullet\bulletBoss_UR.png" />
-    <Content Include="Resources\Images\bullet\bulletEnemy.png" />
-    <Content Include="Resources\Images\bullet\bulletHero_D.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_L.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_LD.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_LDD.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_LU.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_LUU.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_R.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_RD.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_RDD.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_RU.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_RUU.gif" />
-    <Content Include="Resources\Images\bullet\bulletHero_U.gif" />
-    <Content Include="Resources\Images\spaceShip\boss.gif" />
-    <Content Include="Resources\Images\spaceShip\enemy1.png" />
-    <Content Include="Resources\Images\spaceShip\hero.png" />
-    <Content Include="Resources\music\bgm.mp3" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

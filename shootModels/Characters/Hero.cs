@@ -25,14 +25,7 @@ namespace shootModels
         /// 得分
         /// </summary>
         public int score = 0;
-        /// <summary>
-        /// 图片路径
-        /// </summary>
-        static string imgPath = UpdateManager.getAtt("HeroImagPathRoot");
-        /// <summary>
-        /// 图片
-        /// </summary>
-        private Image img = Image.FromFile(imgPath);
+        private Image img = global::shootModels.Properties.Resources.hero;
         //用户是否按下"上\下\左\右"
         private bool U = false, D = false, L = false, R = false;
         public BlooBar blb = null;
